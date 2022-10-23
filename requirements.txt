@@ -1,0 +1,4 @@
+neo4j==5.1.0
+jupyter==1.0.0
+pandas==1.5.1
+python-dotenv==0.21.0
