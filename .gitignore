@@ -1,0 +1,6 @@
+# Python environment
+py39env/
+
+#
+*.pyc
+__pycache__/
