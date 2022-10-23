@@ -1,0 +1,338 @@
+{
+  "style": {
+    "font-family": "Fira Code",
+    "background-color": "#2B2B2B",
+    "background-image": "",
+    "background-size": "100%",
+    "node-color": "#2B2B2B",
+    "border-width": 2,
+    "border-color": "#A6B7C8",
+    "radius": 90,
+    "node-padding": 5,
+    "node-margin": 2,
+    "outside-position": "auto",
+    "node-icon-image": "",
+    "node-background-image": "",
+    "icon-position": "inside",
+    "icon-size": 64,
+    "caption-position": "inside",
+    "caption-max-width": 200,
+    "caption-color": "#A6B7C8",
+    "caption-font-size": 18,
+    "caption-font-weight": "normal",
+    "label-position": "inside",
+    "label-display": "bare",
+    "label-color": "#A6B7C8",
+    "label-background-color": "#ffffff",
+    "label-border-color": "#000000",
+    "label-border-width": 4,
+    "label-font-size": 18,
+    "label-padding": 5,
+    "label-margin": 4,
+    "directionality": "directed",
+    "detail-position": "inline",
+    "detail-orientation": "parallel",
+    "arrow-width": 2,
+    "arrow-color": "#A6B7C8",
+    "margin-start": 0,
+    "margin-end": 0,
+    "margin-peer": 20,
+    "attachment-start": "normal",
+    "attachment-end": "normal",
+    "relationship-icon-image": "",
+    "type-color": "#A6B7C8",
+    "type-background-color": "#2B2B2B",
+    "type-border-color": "#000000",
+    "type-border-width": 0,
+    "type-font-size": 18,
+    "type-padding": 5,
+    "property-position": "inside",
+    "property-alignment": "colon",
+    "property-color": "#A6B7C8",
+    "property-font-size": 18,
+    "property-font-weight": "normal"
+  },
+  "nodes": [
+    {
+      "id": "n0",
+      "position": {
+        "x": -363,
+        "y": -77
+      },
+      "caption": "",
+      "labels": [
+        "AccHolder"
+      ],
+      "properties": {
+        "cif": "",
+        "name": "",
+        "age": "",
+        "email": "",
+        "gender": ""
+      },
+      "style": {}
+    },
+    {
+      "id": "n1",
+      "position": {
+        "x": -423,
+        "y": 303
+      },
+      "caption": "",
+      "labels": [
+        "Country"
+      ],
+      "properties": {
+        "name": ""
+      },
+      "style": {}
+    },
+    {
+      "id": "n2",
+      "position": {
+        "x": 61,
+        "y": -100
+      },
+      "caption": "",
+      "labels": [
+        "CreditCard"
+      ],
+      "properties": {
+        "cardNum": ""
+      },
+      "style": {}
+    },
+    {
+      "id": "n3",
+      "position": {
+        "x": -791.0701627711626,
+        "y": 170.14642370797782
+      },
+      "caption": "",
+      "labels": [
+        "Address"
+      ],
+      "properties": {
+        "street": "",
+        "zip": ""
+      },
+      "style": {}
+    },
+    {
+      "id": "n4",
+      "position": {
+        "x": -170.64615938328652,
+        "y": 256.1666249791536
+      },
+      "caption": "",
+      "labels": [
+        "BankAccount"
+      ],
+      "properties": {
+        "accNum": ""
+      },
+      "style": {}
+    },
+    {
+      "id": "n7",
+      "position": {
+        "x": 92.92983722883741,
+        "y": 460.90548015347656
+      },
+      "caption": "",
+      "labels": [
+        "BankTransfer"
+      ],
+      "properties": {
+        "transactionId": "",
+        "amount": "",
+        "transferDate": "",
+        "transferTime": ""
+      },
+      "style": {}
+    },
+    {
+      "id": "n8",
+      "position": {
+        "x": 404.2540590899647,
+        "y": 196.25405908996464
+      },
+      "caption": "",
+      "labels": [
+        "Purchase"
+      ],
+      "properties": {
+        "transactionId": "",
+        "amount": "",
+        "purchaseDate": "",
+        "purchasedTime": ""
+      },
+      "style": {}
+    },
+    {
+      "id": "n9",
+      "position": {
+        "x": 435.12947946129043,
+        "y": 573.3823246895075
+      },
+      "caption": "",
+      "labels": [
+        "Merchant"
+      ],
+      "properties": {
+        "name": ""
+      },
+      "style": {}
+    },
+    {
+      "id": "n10",
+      "position": {
+        "x": 750.0940153538193,
+        "y": 42.716620826065764
+      },
+      "caption": "",
+      "labels": [
+        "CardIssuer"
+      ],
+      "properties": {
+        "name": ""
+      },
+      "style": {}
+    },
+    {
+      "id": "n11",
+      "position": {
+        "x": -719.9188772659069,
+        "y": -220.55805463729476
+      },
+      "caption": "",
+      "labels": [
+        "Job"
+      ],
+      "properties": {
+        "title": ""
+      },
+      "style": {}
+    },
+    {
+      "id": "n12",
+      "position": {
+        "x": -250.8745653186382,
+        "y": -392.9792089397147
+      },
+      "caption": "",
+      "labels": [
+        "Phone"
+      ],
+      "properties": {
+        "number": ""
+      },
+      "style": {}
+    },
+    {
+      "id": "n13",
+      "position": {
+        "x": -198.38483127685373,
+        "y": 680.1871542047629
+      },
+      "caption": "",
+      "style": {},
+      "labels": [
+        "BankAccount"
+      ],
+      "properties": {
+        "accNum": ""
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "n0",
+      "fromId": "n0",
+      "toId": "n1",
+      "type": "CITIZEN_OF",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n1",
+      "fromId": "n0",
+      "toId": "n2",
+      "type": "HAS_CREDITCARD",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n3",
+      "fromId": "n0",
+      "toId": "n4",
+      "type": "HAS_BANKACCOUNT",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n4",
+      "fromId": "n0",
+      "toId": "n3",
+      "type": "HAS_ADDRESS",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n6",
+      "fromId": "n8",
+      "toId": "n2",
+      "type": "WITH_CARD",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n7",
+      "fromId": "n4",
+      "toId": "n7",
+      "type": "SEND",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n9",
+      "fromId": "n8",
+      "toId": "n9",
+      "type": "FROM",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n10",
+      "fromId": "n8",
+      "toId": "n10",
+      "type": "ISSUED_BY",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n11",
+      "fromId": "n0",
+      "toId": "n11",
+      "type": "WORKS_AS",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n12",
+      "fromId": "n0",
+      "toId": "n12",
+      "type": "HAS_PHONE",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n13",
+      "type": "SEND",
+      "style": {},
+      "properties": {},
+      "fromId": "n7",
+      "toId": "n13"
+    }
+  ]
+}
