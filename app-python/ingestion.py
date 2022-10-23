@@ -185,7 +185,7 @@ def load_customer_csv():
         MERGE (ah)-[:WORKS_AS]->(job)
 
         // *** Relate AccHolders to Country ***
-        MERGE (ah)-[:WORKS_AS]->(country)
+        MERGE (ah)-[:CITIZEN_OF]->(country)
         
     } IN TRANSACTIONS OF 10 ROWS
     """
