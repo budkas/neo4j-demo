@@ -270,6 +270,27 @@ def load_purchases_csv():
         r = session.run(create_purchases_cypher)
 
 # %%
+def load_countries_csv():
+
+    # Define the cypher statement
+    update_countries_cypher = r"""
+    CALL {
+        LOAD CSV WITH HEADERS FROM "file:///./banking/countries.csv" AS row
+
+        MERGE (c:Country {name: apoc.text.capitalizeAll(toLower(trim(row.ShortName)))})
+        ON CREATE SET c.name = apoc.text.capitalizeAll(toLower(trim(row.ShortName))),
+                        c.code = row.Alpha3Code,
+                        c.region = row.Region
+        ON MATCH SET c.code = row.Alpha3Code,
+                        c.region = row.Region 
+    } IN TRANSACTIONS OF 10 ROWS
+    """
+
+    # Execute in an Implicit transaction
+    with driver.session() as session:
+        r = session.run(update_countries_cypher)
+
+# %%
 def load_data():
     """
     This function delete any exisiting data, create required constraints for the demo banking use case,
@@ -295,8 +316,11 @@ def load_data():
     load_purchases_csv()
     print("purchases.csv loaded successfully!")
 
+    #Enrich country nodes
+    load_countries_csv()
+    print("countries.csv loaded successfully")
+
 # %%
-if __name__ == "__main__":
-    load_data()
+load_data()
 
 
