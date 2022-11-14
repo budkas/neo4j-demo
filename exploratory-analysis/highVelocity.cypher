@@ -1,5 +1,6 @@
-MATCH (acc1:BankAccount)-[r:SEND]-(:BankTransfer)
-WITH distinct acc1, type(r) as rel, count(r) as cnt
-WHERE cnt > 25
-MATCH p1=(:AccHolder)-[:HAS_BANKACCOUNT]->(acc1)-[:SEND]-(:BankTransfer)-[:SEND]-(:BankAccount)<-[:HAS_BANKACCOUNT]-(:AccHolder)
-RETURN p1
+MATCH (acc:BankAccount)-[r:SEND]-(:BankTransfer)
+WITH distinct acc, count(r) as cnt
+WHERE cnt > 23
+MATCH path=(acc)<-[:HAS_BANKACCOUNT]-(ah:AccHolder)-[rel*2..4]-(ah2:AccHolder)
+WHERE ALL(r in rel WHERE not(type(r)='CITIZEN_OF') )
+RETURN path

@@ -1,23 +1,14 @@
-WITH date('2021-06-30') as curDate, 190000 as curThreshold
+WITH date('2021-06-30') as curDate, 180000 as curThreshold
 WITH curThreshold, curDate, curDate-duration({days:30}) as curDate30
-MATCH (trf:BankTransfer)
-CALL {
-    WITH trf, curDate, curDate30, curThreshold
-    MATCH (trf)<-[:SEND]-(acc:BankAccount)
-    WHERE trf.transferDate <= curDate
-    AND trf.transferDate >= curDate30
-    WITH acc.accNum as curAccNum, trf.transferDate as transactionDate, sum(trf.amount) as totAmount, curThreshold
-    WHERE totAmount > curThreshold
-    RETURN curAccNum, transactionDate, totAmount, 'Debit' as transactionType
-    UNION ALL
-    WITH trf, curDate, curDate30, curThreshold
-    MATCH (trf)-[:SEND]->(acc:BankAccount)
-    WHERE trf.transferDate <= curDate
-    AND trf.transferDate >= curDate30
-    WITH acc.accNum as curAccNum, trf.transferDate as transactionDate, sum(trf.amount) as totAmount, curThreshold
-    WHERE totAmount > curThreshold
-    RETURN curAccNum, transactionDate, totAmount, 'Credit' as transactionType 
-}
-WITH curAccNum, transactionDate, totAmount, transactionType
-MATCH p=(ah:AccHolder)-[:HAS_BANKACCOUNT]->(ba:BankAccount {accNum: curAccNum})-[:SEND]-(:BankTransfer)
-RETURN p
+WITH curDate, curDate30, curThreshold
+UNWIND [days IN range(1,duration.between(curDate30,curDate).days) | 
+         curDate30 + duration({days:days})] as day
+OPTIONAL MATCH (credit)-[:SEND]->(acc:BankAccount) //inward transfers
+WHERE credit.transferDate = day
+OPTIONAL MATCH (acc)-[:SEND]->(debit) //outward transfers
+WHERE debit.transferDate = day
+WITH acc, day, curThreshold, sum(credit.amount) as credits, sum(debit.amount) as debits
+WHERE credits > curThreshold OR debits > curThreshold
+MATCH path=(acc)<-[:HAS_BANKACCOUNT]-(ah:AccHolder)-[rel*2..4]-(ah2:AccHolder)
+WHERE ALL(r in rel WHERE not(type(r)='CITIZEN_OF') )
+RETURN path

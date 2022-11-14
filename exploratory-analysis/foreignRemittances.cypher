@@ -1,10 +1,7 @@
-MATCH (c1:Country)<-[:CITIZEN_OF]-(ah1:AccHolder)-[:HAS_BANKACCOUNT]->(sender:BankAccount)-[:SEND]->
-(trf:BankTransfer)-[:SEND]->(receiver:BankAccount)<-[:HAS_BANKACCOUNT]-(ah2:AccHolder)-[:CITIZEN_OF]->(c2:Country)
-// remove local transfers
+MATCH(c1:Country)<-[:CITIZEN_OF]-(sender:AccHolder)-[:HAS_BANKACCOUNT]->(fromAcc:BankAccount)-[:SEND]->(trf:BankTransfer)-[:SEND]->(toAcc:BankAccount)<-[:HAS_BANKACCOUNT]-(receiver:AccHolder)-[:CITIZEN_OF]->(c2:Country)
 WHERE c1.name <> c2.name
-WITH c1, c2
-,count(trf.amount) as numTransfers, sum(trf.amount) as totalTransfer
-WHERE numTransfers > 2
-MATCH p=(c1)<-[:CITIZEN_OF]-(ah1:AccHolder)-[:HAS_BANKACCOUNT]->(sender:BankAccount)-[:SEND]->
-(trf:BankTransfer)-[:SEND]->(receiver:BankAccount)<-[:HAS_BANKACCOUNT]-(ah2:AccHolder)-[:CITIZEN_OF]->(c2)
+WITH c1, c2, sender, receiver
+MATCH (receiver)-[:HAS_BANKACCOUNT]->(:BankAccount)-[:SEND]->(:BankTransfer)-[:SEND]->(:BankAccount)<-[:HAS_BANKACCOUNT]-(newReceiver:AccHolder)-[:CITIZEN_OF]->(c1)
+WITH sender, newReceiver
+MATCH p=(sender)-[:SEND|HAS_BANKACCOUNT|WORKS_AS*2..4]-(newReceiver)
 RETURN p
